@@ -1,5 +1,8 @@
 from django.urls import path
 from . import views
+from rest_framework_simplejwt import views as jwt_views  # Import jwt_views
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
 
 urlpatterns = [
     # User-related endpoints
@@ -22,7 +25,9 @@ urlpatterns = [
     path('auth/register/', views.UserViewSet.as_view({'post': 'create'}), name='user-register'),
     path('auth/login/', views.CustomLoginView.as_view(), name='login'),
     path('auth/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
-
+    path('auth/token/', TokenObtainPairView.as_view(), name='token_obtain'),
+    path('auth/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
     # Other routes
     path('menu-items/', views.MenuItemListCreateView.as_view(), name='menu-item-list-create'),
     path('menu-items/<int:pk>/', views.MenuItemDetailView.as_view(), name='menu-item-detail'),

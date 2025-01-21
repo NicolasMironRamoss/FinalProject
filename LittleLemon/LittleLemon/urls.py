@@ -17,8 +17,10 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from LittleLemonAPI.views import home  # Import the view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('api/', include('LittleLemonAPI.urls')),  # This will include your API-level urls.py
+    path('', home, name='home'),  # Root URL, returns "Welcome to LittleLemon API!"
+    path('admin/', admin.site.urls),  # Admin path
+    path('api/', include('LittleLemonAPI.urls')),  # Your app's API
 ]

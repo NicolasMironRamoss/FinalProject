@@ -28,7 +28,12 @@ from rest_framework.response import Response
 # USER AUTHENTICATION:
 from djoser.views import UserViewSet
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from .serializers import UserSerializer, UserCreateSerializer  # Assuming it's in your serializers.py file
 
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Welcome to the LittleLemon API!")
 
 # USER-RELATED VIEWS: 
 
