@@ -17,4 +17,17 @@ urlpatterns = [
     # Order-related endpoints
     path('orders/', views.OrderListCreateView.as_view(), name='order-list-create'),
     path('orders/<int:pk>/', views.OrderDetailView.as_view(), name='order-detail'),
+
+    # User authentication routes
+    path('auth/register/', views.UserViewSet.as_view({'post': 'create'}), name='user-register'),
+    path('auth/login/', views.CustomLoginView.as_view(), name='login'),
+    path('auth/token/refresh/', jwt_views.TokenRefreshView.as_view(), name='token_refresh'),
+
+    # Other routes
+    path('menu-items/', views.MenuItemListCreateView.as_view(), name='menu-item-list-create'),
+    path('menu-items/<int:pk>/', views.MenuItemDetailView.as_view(), name='menu-item-detail'),
+    path('cart/menu-items/', views.CartListCreateView.as_view(), name='cart-list-create'),
+    path('orders/', views.OrderListCreateView.as_view(), name='order-list-create'),
+    path('orders/<int:pk>/', views.OrderDetailView.as_view(), name='order-detail'),
+
 ]
